@@ -7,13 +7,21 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(45deg, #dc2626, #1d4ed8);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
             min-height: 100vh;
             margin: 0;
             padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .calendar-container {
@@ -26,7 +34,7 @@
         }
         
         .calendar-header {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #dc2626, #1d4ed8);
             color: white;
             padding: 30px;
             text-align: center;
@@ -48,7 +56,7 @@
         }
         
         .day-header {
-            background: #667eea;
+            background: linear-gradient(45deg, #dc2626, #1d4ed8);
             color: white;
             padding: 15px;
             text-align: center;
@@ -183,7 +191,7 @@
         }
         
         .close {
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #dc2626, #1d4ed8);
             color: white;
             border: none;
             padding: 12px 24px;
@@ -213,6 +221,21 @@
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
+        }
+        
+        .modal-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .sagrada-familia-icon {
+            width: 80px;
+            height: 80px;
+            margin: 10px 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
         
         .legend {
@@ -339,7 +362,9 @@
             </div>
             <div class="day">
                 <div class="day-number">13</div>
-                <div class="event barcelona">✈️ Viaje a Barcelona</div>
+                <div class="event barcelona">
+                    <button class="event-button" onclick="openModal('viajeBarcelonaModal')">✈️ Viaje a Barcelona</button>
+                </div>
             </div>
             <div class="day">
                 <div class="day-number">14</div>
@@ -393,7 +418,9 @@
             </div>
             <div class="day">
                 <div class="day-number">26</div>
-                <div class="event chile">🏠 Vuelta a Chile</div>
+                <div class="event chile">
+                    <button class="event-button" onclick="openModal('vueltaChileModal')">🏠 Vuelta a Chile</button>
+                </div>
             </div>
             <div class="day">
                 <div class="day-number">27</div>
@@ -434,6 +461,32 @@
     </div>
     
     <!-- Modales -->
+    <div id="viajeBarcelonaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">✈️ Viaje a Barcelona</div>
+            <div class="modal-body">
+                <div style="font-size: 3em; margin: 10px 0;">🎉</div>
+                <strong>¡Nos fuimos chavaaalees!</strong><br>
+                13 de noviembre de 2025<br>
+                Barcelona, España
+            </div>
+            <button class="close" onclick="closeModal('viajeBarcelonaModal')">Cerrar</button>
+        </div>
+    </div>
+    
+    <div id="vueltaChileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">🏠 Vuelta a Chile</div>
+            <div class="modal-body">
+                <div style="font-size: 3em; margin: 10px 0;">🐕</div>
+                <strong>¡De vuelta a casa!</strong><br>
+                26 de noviembre de 2025<br>
+                Reencuentro con la familia
+            </div>
+            <button class="close" onclick="closeModal('vueltaChileModal')">Cerrar</button>
+        </div>
+    </div>
+    
     <div id="fifaModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">🏆 FIFA - Fecha Internacional</div>
